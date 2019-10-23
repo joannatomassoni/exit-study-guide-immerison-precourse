@@ -140,17 +140,13 @@ var replaceValuesInObj = (obj, value, newValue) => {
 
     // loop through obj
     for (let key in obj) {
-        // if the value of object key is an object, call function on that key/value
-        if (obj[key] instanceof Object) {
-            let nestedObj = obj[key]
-            for (let key in nestedObj) {
-                return replaceValuesInObj(nestedObj, value, newValue);
-            }
-        } 
         // if key has value passed in, replace it with newValue
         if (obj[key] === value) {
             obj[key] = newValue;
-            return replaceValuesInObj(obj, value, newValue)
+        } 
+        // if the value of object key is an object, call function on that key/value
+        if (obj[key] instanceof Object) {
+            replaceValuesInObj(obj[key], value, newValue);
         } 
     } return obj
 };
