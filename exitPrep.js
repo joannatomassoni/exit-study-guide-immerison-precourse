@@ -14,7 +14,24 @@
 
 
 const pureShuffle = array => {
-    // your code here
+    // i: array
+    // o: new array with contents shuffled around
+    // c: must not modify input array
+    // e:
+
+    // declare new array
+    let shuffled = [];
+    // loop through input array as long as new array is less than the length of the input array
+    for (let i = 0; shuffled.length < array.length; i++) {
+        // declare variable for random element
+        let randomElement = array[Math.floor(Math.random() * array.length)];
+        // if new array does not contain random element, add that element to new array
+        if (!shuffled.includes(randomElement)) {
+            shuffled.push(randomElement);
+        }
+    }
+    // return new array
+    return shuffled;
 };
 
 var isPalindrome = (string) => {
