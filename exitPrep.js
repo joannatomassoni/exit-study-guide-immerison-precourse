@@ -21,16 +21,15 @@ const pureShuffle = array => {
 
     // declare new array
     let shuffled = [];
-    // loop through input array as long as new array is less than the length of the input array
+    // loop through array while new array length is less than input
     for (let i = 0; shuffled.length < array.length; i++) {
-        // declare variable for random element
-        let randomElement = array[Math.floor(Math.random() * array.length)];
-        // if new array does not contain random element, add that element to new array
-        if (!shuffled.includes(randomElement)) {
-            shuffled.push(randomElement);
+        // get random element
+        let randomEl = array[Math.floor(Math.random() * array.length)];
+        // if new array does not contain random element add it to new array
+        if (!shuffled.includes(randomEl)) {
+            shuffled.push(randomEl);
         }
     }
-    // return new array
     return shuffled;
 };
 
@@ -40,23 +39,19 @@ const dirtyShuffle = (array) => {
     // c: should modify original array
     // e:
     
-    // create hold variable
+    // declare hold variable
     let hold;
     // loop through array
     for (let i = 0; i < array.length; i++) {
-        // get random index
-        let randomIndex = Math.floor(Math.random() * array.length)
-        // "move" current element to hold variable
+        // declare variable to store random index
+        let randomIndex = Math.floor(Math.random() * array.length);
+        // assign array at i to hold variable
         hold = array[i];
-        // put random element into array[i] position
-        array[i] = array[randomIndex]
-        // put variable stored in hold into the random index position
+        // put element at randomIndex to i position
+        array[i] = array[randomIndex];
+        // put the element that is now in hold in the array at randomIndex
         array[randomIndex] = hold;
-    }
-
-
-    // return array.sort(() => Math.random() - 0.5)
-    return array;
+    } return array;
 };
 
 var isPalindrome = (string) => {
@@ -71,14 +66,7 @@ var isPalindrome = (string) => {
     if (!string) {
         return undefined;
     }
-    
-    // // convert string to array, reverse that array, turn it back into a string,
-    // //  and compare it to original string
-    // let strArr = string.split("").reverse().join("");
-    // return string === strArr ? true: false;    
-
-
-    // recursively
+  
     // base case
     if (string.length < 3) {
         return true
