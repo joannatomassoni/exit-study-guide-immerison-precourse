@@ -77,7 +77,7 @@ var isPalindrome = (string) => {
             return false;
         }
     }
-}
+};
 
 const mergeObjects = (...obj) => {
     // i: a first object and a bunch of other objects
