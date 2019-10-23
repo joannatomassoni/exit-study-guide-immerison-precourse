@@ -35,7 +35,22 @@ const pureShuffle = array => {
 };
 
 var isPalindrome = (string) => {
-    // your code here
+    // i: string
+    // o: boolean, undefined if string is empty
+    // c: consider upper and lowercases to be equivalent.
+    // e: 
+    
+    // change string to all lower case
+    string = string.toLowerCase();
+    // if string is empty, return undefined
+    if (!string) {
+        return undefined;
+    }
+    
+    // convert string to array, reverse that array, turn it back into a string,
+    //  and compare it to original string
+    let strArr = string.split("").reverse().join("");
+    return string === strArr ? true: false;    
 }
 
 const mergeObjects = obj => {
