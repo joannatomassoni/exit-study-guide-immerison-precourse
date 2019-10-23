@@ -51,15 +51,28 @@ var isPalindrome = (string) => {
     
     // change string to all lower case
     string = string.toLowerCase();
-    // if string is empty, return undefined
+    // // if string is empty, return undefined
     if (!string) {
         return undefined;
     }
     
-    // convert string to array, reverse that array, turn it back into a string,
-    //  and compare it to original string
-    let strArr = string.split("").reverse().join("");
-    return string === strArr ? true: false;    
+    // // convert string to array, reverse that array, turn it back into a string,
+    // //  and compare it to original string
+    // let strArr = string.split("").reverse().join("");
+    // return string === strArr ? true: false;    
+
+
+    // recursively
+    // base case
+    if (string.length < 3) {
+        return true
+    } else {
+        if (string[0] === string[string.length - 1]) {
+            return isPalindrome(string.slice(1, string.length - 1))
+        } else {
+            return false;
+        }
+    }
 }
 
 const mergeObjects = (...obj) => {
@@ -104,6 +117,7 @@ const semiMergeObjects = (...obj) => {
             // if key does not already exist in first obj
             if (!first.hasOwnProperty(key)) {
                 // add  key value pair to first object
+                console.log(key);
                 first[key] = rest[i][key];
             }
         }
