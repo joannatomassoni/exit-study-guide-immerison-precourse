@@ -34,6 +34,15 @@ const pureShuffle = array => {
     return shuffled;
 };
 
+const dirtyShuffle = (array) => {
+    // i: array
+    // o: new array with contents shuffled around
+    // c: should modify original array
+    // e:
+
+    return array.sort(() => Math.random() - 0.5)
+};
+
 var isPalindrome = (string) => {
     // i: string
     // o: boolean, undefined if string is empty
@@ -107,7 +116,22 @@ var replaceValuesInObj = (obj, value, newValue) => {
 };
 
 var addKeysToExistingObj = (obj, newKey, newValue) => {
-    // your code here
+    // i: obj and new key/value pair to add 
+    // o: obj with added values
+    // c: use recursion
+    // e: what if there are nested objects?
+    console.log(JSON.stringify(obj))
+    console.log(newKey, newValue);
+    // add new key value pair to obj
+    obj[newKey] = newValue;
+    // loop through obj
+    for (let key in obj) {
+        // if key is an object, add key value pair to that obj
+        if (key instanceof Object) {
+            return addKeysToExistingObj(obj[key], newKey, newValue);
+        }
+    }
+    return obj;
 };
 
 var map = (arr, func, mappedArray = []) => {
