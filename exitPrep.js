@@ -150,7 +150,18 @@ var comediansFilteredAndMapped = (comedians) => {
 };
 
 var comedianNamesFilteredAndMapped = (comedians) => {
-    // Your code here
+    // i: array of comedian objects
+    // o: array of comedian names
+    // c: use filter and map
+    // e:
+
+    // call filter to get comedians from 2005 on whose full names are >10
+    // call map to get just their names
+    return comedians.filter((comedian) => {
+        return comedian.begin >= 2005 && comedian.actor.length >= 10;
+    }).map((comedian) => {
+        return comedian.actor;
+    })
 
 };
 
