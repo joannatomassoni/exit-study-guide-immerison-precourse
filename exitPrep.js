@@ -91,15 +91,18 @@ var replaceValuesInObj = (obj, value, newValue) => {
 
     // loop through obj
     for (let key in obj) {
+        // if the value of object key is an object, call function on that key/value
+        if (obj[key] instanceof Object) {
+            let nestedObj = obj[key]
+            for (let key in nestedObj) {
+                return replaceValuesInObj(nestedObj, value, newValue);
+            }
+        } 
         // if key has value passed in, replace it with newValue
         if (obj[key] === value) {
             obj[key] = newValue;
+            return replaceValuesInObj(obj, value, newValue)
         } 
-        // if the value of object key is an object, call function on that key/value
-        if (obj[key] instanceof Object) {
-            return replaceValuesInObj(obj[key], value, newValue);
-        } 
-        // return replaceValuesInObj(obj[key], value, newValue);
     } return obj
 };
 
@@ -107,8 +110,18 @@ var addKeysToExistingObj = (obj, newKey, newValue) => {
     // your code here
 };
 
-var map = (arr, func) => {
-    // your code here
+var map = (arr, func, mappedArray = []) => {
+    // i: arr, func to call on arr items, mapped array to return
+    // o: mapped array
+    // c: use recursion
+    // e: 
+
+    // base case
+    if (!arr.length) {
+        return mappedArray;
+    }
+    // recursive call
+    return map(arr.slice(1), func, mappedArray.concat(func(arr[0])));
 }
 
 
