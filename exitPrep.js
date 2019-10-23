@@ -162,7 +162,6 @@ var comedianNamesFilteredAndMapped = (comedians) => {
     }).map((comedian) => {
         return comedian.actor;
     })
-
 };
 
 
@@ -170,8 +169,22 @@ var comedianNamesFilteredAndMapped = (comedians) => {
 
 /* Solve by using native method of reduce only */
 var comediansReduced1 = (comedians) => {
-    // Your code here
+    // i: array of comedian objects
+    // o: a reduced array of objects
+    // c: use reduce
+    // e:
 
+    // call reduce to get cast members from 2005 on whose full names are >10
+    return comedians.reduce((reduced, comedian) => {
+        if (comedian.begin >= 2005 && comedian.actor.length >= 10) {
+            reduced.push({
+                appearanceNumber: "#" + comedian.number,
+                name: comedian.actor,
+                seasonsActive: comedian.end + 1 - comedian.begin
+            })
+        }
+        return reduced;
+    },[])
 };
 
 var comediansReduced2 = (comedians) => {
