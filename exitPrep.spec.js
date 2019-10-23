@@ -510,13 +510,6 @@ describe('10) comediansReduced2()', () => {
 describe('11) dirtyShuffle()', () => {
     const array = [1,2,3,4,5];
 
-    const tResult = [];
-
-    before(() => sinon.spy(Array.prototype, 'reduce'));
-
-    afterEach(() => Array.prototype.reduce.reset());
-
-    after(() => Array.prototype.reduce.restore());
 
     it('should exist', () => {
         dirtyShuffle.should.be.an.instanceOf(Function);
