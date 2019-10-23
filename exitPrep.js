@@ -39,8 +39,24 @@ const dirtyShuffle = (array) => {
     // o: new array with contents shuffled around
     // c: should modify original array
     // e:
+    
+    // create hold variable
+    let hold;
+    // loop through array
+    for (let i = 0; i < array.length; i++) {
+        // get random index
+        let randomIndex = Math.floor(Math.random() * array.length)
+        // "move" current element to hold variable
+        hold = array[i];
+        // put random element into array[i] position
+        array[i] = array[randomIndex]
+        // put variable stored in hold into the random index position
+        array[randomIndex] = hold;
+    }
 
-    return array.sort(() => Math.random() - 0.5)
+
+    // return array.sort(() => Math.random() - 0.5)
+    return array;
 };
 
 var isPalindrome = (string) => {
