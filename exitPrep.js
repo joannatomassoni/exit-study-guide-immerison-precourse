@@ -83,7 +83,24 @@ const mergeObjects = (...obj) => {
 //////////////////////////////////////////////////////
 
 var replaceValuesInObj = (obj, value, newValue) => {
-    // your code here
+    // i: obj, value, and new value to replace old value with
+    // o: obj with replaced values
+    // c: use recursion
+    // e: what if there are nested objects?
+
+
+    // loop through obj
+    for (let key in obj) {
+        // if key has value passed in, replace it with newValue
+        if (obj[key] === value) {
+            obj[key] = newValue;
+        } 
+        // if the value of object key is an object, call function on that key/value
+        if (obj[key] instanceof Object) {
+            return replaceValuesInObj(obj[key], value, newValue);
+        } 
+        // return replaceValuesInObj(obj[key], value, newValue);
+    } return obj
 };
 
 var addKeysToExistingObj = (obj, newKey, newValue) => {
@@ -114,8 +131,22 @@ var comedians = [
 
 /* Solve by chaining native methods of map and filter only */
 var comediansFilteredAndMapped = (comedians) => {
-    // Your code here
+    // i: array of comedian objects
+    // o: a mapped array of objects
+    // c: use filter and map
+    // e:
 
+    // call filter to get just comedians from 2005- and whose name length is >=10
+    // call map to transform that info into new objects with appearanceNumber, name, and seasonsActive
+    return comedians.filter((comedian) => {
+        return comedian.begin >= 2005 && comedian.actor.length >= 10;
+    }).map((comedian) => {
+        return {
+            appearanceNumber: "#" + comedian.number,
+            name: comedian.actor,
+            seasonsActive: comedian.end + 1 - comedian.begin
+        }
+    })
 };
 
 var comedianNamesFilteredAndMapped = (comedians) => {
