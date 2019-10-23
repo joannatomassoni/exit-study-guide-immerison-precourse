@@ -156,15 +156,15 @@ var addKeysToExistingObj = (obj, newKey, newValue) => {
     // o: obj with added values
     // c: use recursion
     // e: what if there are nested objects?
-    console.log(JSON.stringify(obj))
-    console.log(newKey, newValue);
-    // add new key value pair to obj
-    obj[newKey] = newValue;
+
     // loop through obj
     for (let key in obj) {
         // if key is an object, add key value pair to that obj
-        if (key instanceof Object) {
-            return addKeysToExistingObj(obj[key], newKey, newValue);
+        if (obj[key] instanceof Object) {
+            addKeysToExistingObj(obj[key], newKey, newValue);
+        } else {
+            // add new key value pair to obj
+            obj[newKey] = newValue;
         }
     }
     return obj;
