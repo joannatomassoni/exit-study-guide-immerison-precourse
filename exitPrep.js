@@ -53,8 +53,27 @@ var isPalindrome = (string) => {
     return string === strArr ? true: false;    
 }
 
-const mergeObjects = obj => {
-    // your code here
+const mergeObjects = (...obj) => {
+    // i: a first object and a bunch of other objects
+    // o: first object that now contains key/value pairs from all the other objects
+    // c: if any of the other objects contain keys that the first object does, first object values should be updated with the other object values at that key
+    // e: ^^?
+
+
+    // create variable for (1) first object in arguments and (2) rest of objects in arguments
+    const first = obj[0];
+    const rest = obj.slice(1);
+
+    // loop through rest of objects array
+    for (let i = 0; i < rest.length; i++) {
+        // loop through each object
+        for (let key in rest[i]) {
+            // add each key value pair to first object
+            first[key] = rest[i][key];
+        }
+    }
+    // return first object
+    return first;
 };
 
 
